@@ -1,0 +1,15 @@
+{
+  "title": "Yellow",
+  "artist": "Taylor Swift",
+  "album": "Renaissance",
+  "genres": [
+    "Rock",
+    "Blues",
+    "Pop"
+  ],
+  "slug": "yellow",
+  "coverImage": "https://picsum.photos/seed/Yellow/300/300",
+  "id": "1745215911477",
+  "createdAt": "2025-04-21T06:11:51.477Z",
+  "updatedAt": "2025-04-21T06:11:51.477Z"
+}

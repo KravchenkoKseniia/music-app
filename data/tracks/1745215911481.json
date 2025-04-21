@@ -1,0 +1,13 @@
+{
+  "title": "Gimme Shelter",
+  "artist": "Taylor Swift",
+  "genres": [
+    "Electronic",
+    "Country"
+  ],
+  "slug": "gimme-shelter",
+  "coverImage": "https://picsum.photos/seed/Gimme%20Shelter/300/300",
+  "id": "1745215911481",
+  "createdAt": "2025-04-21T06:11:51.481Z",
+  "updatedAt": "2025-04-21T06:11:51.481Z"
+}

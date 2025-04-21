@@ -1,0 +1,15 @@
+{
+  "title": "Dynamite",
+  "artist": "SZA",
+  "album": "Dawn FM",
+  "genres": [
+    "Indie",
+    "Electronic",
+    "Rock"
+  ],
+  "slug": "dynamite",
+  "coverImage": "https://picsum.photos/seed/Dynamite/300/300",
+  "id": "1745215911457",
+  "createdAt": "2025-04-21T06:11:51.457Z",
+  "updatedAt": "2025-04-21T06:11:51.457Z"
+}

@@ -1,0 +1,14 @@
+{
+  "title": "As It Was",
+  "artist": "Bruno Mars",
+  "album": "Certified Lover Boy",
+  "genres": [
+    "Indie",
+    "Folk"
+  ],
+  "slug": "as-it-was",
+  "coverImage": "https://picsum.photos/seed/As%20It%20Was/300/300",
+  "id": "1745215911466",
+  "createdAt": "2025-04-21T06:11:51.466Z",
+  "updatedAt": "2025-04-21T06:11:51.466Z"
+}

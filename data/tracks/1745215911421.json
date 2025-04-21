@@ -1,0 +1,14 @@
+{
+  "title": "Smells Like Teen Spirit",
+  "artist": "Ariana Grande",
+  "album": "24K Magic",
+  "genres": [
+    "R&B",
+    "Reggae"
+  ],
+  "slug": "smells-like-teen-spirit",
+  "coverImage": "https://picsum.photos/seed/Smells%20Like%20Teen%20Spirit/300/300",
+  "id": "1745215911421",
+  "createdAt": "2025-04-21T06:11:51.421Z",
+  "updatedAt": "2025-04-21T06:11:51.421Z"
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Like a Rolling Stone",
+  "artist": "Bruno Mars",
+  "genres": [
+    "Jazz",
+    "R&B"
+  ],
+  "slug": "like-a-rolling-stone",
+  "coverImage": "https://picsum.photos/seed/Like%20a%20Rolling%20Stone/300/300",
+  "id": "1745215911440",
+  "createdAt": "2025-04-21T06:11:51.440Z",
+  "updatedAt": "2025-04-21T06:11:51.440Z"
+}

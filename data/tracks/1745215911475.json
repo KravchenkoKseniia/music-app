@@ -1,0 +1,13 @@
+{
+  "title": "Smells Like Teen Spirit",
+  "artist": "Drake",
+  "album": "Music of the Spheres",
+  "genres": [
+    "Country"
+  ],
+  "slug": "smells-like-teen-spirit",
+  "coverImage": "https://picsum.photos/seed/Smells%20Like%20Teen%20Spirit/300/300",
+  "id": "1745215911475",
+  "createdAt": "2025-04-21T06:11:51.475Z",
+  "updatedAt": "2025-04-21T06:11:51.475Z"
+}

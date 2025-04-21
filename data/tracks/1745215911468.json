@@ -1,0 +1,14 @@
+{
+  "title": "London Calling",
+  "artist": "Beyoncé",
+  "album": "Positions",
+  "genres": [
+    "Reggae",
+    "Blues"
+  ],
+  "slug": "london-calling",
+  "coverImage": "https://picsum.photos/seed/London%20Calling/300/300",
+  "id": "1745215911468",
+  "createdAt": "2025-04-21T06:11:51.468Z",
+  "updatedAt": "2025-04-21T06:11:51.468Z"
+}

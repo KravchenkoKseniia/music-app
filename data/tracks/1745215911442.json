@@ -1,0 +1,14 @@
+{
+  "title": "Rocket Man",
+  "artist": "Dua Lipa",
+  "genres": [
+    "Electronic",
+    "Metal",
+    "Country"
+  ],
+  "slug": "rocket-man",
+  "coverImage": "https://picsum.photos/seed/Rocket%20Man/300/300",
+  "id": "1745215911442",
+  "createdAt": "2025-04-21T06:11:51.442Z",
+  "updatedAt": "2025-04-21T06:11:51.442Z"
+}

@@ -1,0 +1,12 @@
+{
+  "title": "Rocket Man",
+  "artist": "Taylor Swift",
+  "genres": [
+    "Jazz"
+  ],
+  "slug": "rocket-man",
+  "coverImage": "https://picsum.photos/seed/Rocket%20Man/300/300",
+  "id": "1745215911424",
+  "createdAt": "2025-04-21T06:11:51.424Z",
+  "updatedAt": "2025-04-21T06:11:51.424Z"
+}

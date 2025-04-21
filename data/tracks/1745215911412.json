@@ -1,0 +1,13 @@
+{
+  "title": "Love Story",
+  "artist": "Billie Eilish",
+  "album": "Chromatica",
+  "genres": [
+    "Electronic"
+  ],
+  "slug": "love-story",
+  "coverImage": "https://picsum.photos/seed/Love%20Story/300/300",
+  "id": "1745215911412",
+  "createdAt": "2025-04-21T06:11:51.412Z",
+  "updatedAt": "2025-04-21T06:11:51.412Z"
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Thriller",
+  "artist": "Post Malone",
+  "album": "Un Verano Sin Ti",
+  "genres": [
+    "Indie",
+    "Jazz",
+    "Hip Hop"
+  ],
+  "slug": "thriller",
+  "coverImage": "https://picsum.photos/seed/Thriller/300/300",
+  "id": "1745215911465",
+  "createdAt": "2025-04-21T06:11:51.465Z",
+  "updatedAt": "2025-04-21T06:11:51.465Z"
+}

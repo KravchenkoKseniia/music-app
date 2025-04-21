@@ -1,0 +1,15 @@
+{
+  "title": "Tití Me Preguntó",
+  "artist": "The Weeknd",
+  "album": "24K Magic",
+  "genres": [
+    "Indie",
+    "Jazz",
+    "Country"
+  ],
+  "slug": "tit-me-pregunt",
+  "coverImage": "https://picsum.photos/seed/Tit%C3%AD%20Me%20Pregunt%C3%B3/300/300",
+  "id": "1745215911443",
+  "createdAt": "2025-04-21T06:11:51.443Z",
+  "updatedAt": "2025-04-21T06:11:51.443Z"
+}

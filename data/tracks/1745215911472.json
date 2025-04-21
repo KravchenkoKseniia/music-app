@@ -1,0 +1,13 @@
+{
+  "title": "Peaches",
+  "artist": "Taylor Swift",
+  "genres": [
+    "Hip Hop",
+    "Rock"
+  ],
+  "slug": "peaches",
+  "coverImage": "https://picsum.photos/seed/Peaches/300/300",
+  "id": "1745215911472",
+  "createdAt": "2025-04-21T06:11:51.472Z",
+  "updatedAt": "2025-04-21T06:11:51.472Z"
+}

@@ -1,0 +1,15 @@
+{
+  "title": "A Change Is Gonna Come",
+  "artist": "Adele",
+  "album": "Happier Than Ever",
+  "genres": [
+    "Rock",
+    "Country",
+    "Electronic"
+  ],
+  "slug": "a-change-is-gonna-come",
+  "coverImage": "https://picsum.photos/seed/A%20Change%20Is%20Gonna%20Come/300/300",
+  "id": "1745215911394",
+  "createdAt": "2025-04-21T06:11:51.394Z",
+  "updatedAt": "2025-04-21T06:11:51.394Z"
+}

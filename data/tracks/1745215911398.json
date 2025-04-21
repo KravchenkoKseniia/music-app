@@ -1,0 +1,15 @@
+{
+  "title": "HUMBLE.",
+  "artist": "Lady Gaga",
+  "album": "Un Verano Sin Ti",
+  "genres": [
+    "Rock",
+    "Blues",
+    "Metal"
+  ],
+  "slug": "humble",
+  "coverImage": "https://picsum.photos/seed/HUMBLE./300/300",
+  "id": "1745215911398",
+  "createdAt": "2025-04-21T06:11:51.398Z",
+  "updatedAt": "2025-04-21T06:11:51.398Z"
+}

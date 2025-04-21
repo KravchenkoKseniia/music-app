@@ -1,0 +1,13 @@
+{
+  "title": "London Calling",
+  "artist": "Lady Gaga",
+  "album": "24K Magic",
+  "genres": [
+    "Rock"
+  ],
+  "slug": "london-calling",
+  "coverImage": "https://picsum.photos/seed/London%20Calling/300/300",
+  "id": "1745215911456",
+  "createdAt": "2025-04-21T06:11:51.456Z",
+  "updatedAt": "2025-04-21T06:11:51.456Z"
+}

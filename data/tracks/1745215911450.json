@@ -1,0 +1,13 @@
+{
+  "title": "Uptown Funk",
+  "artist": "Adele",
+  "album": "Midnight",
+  "genres": [
+    "Jazz"
+  ],
+  "slug": "uptown-funk",
+  "coverImage": "https://picsum.photos/seed/Uptown%20Funk/300/300",
+  "id": "1745215911450",
+  "createdAt": "2025-04-21T06:11:51.450Z",
+  "updatedAt": "2025-04-21T06:11:51.450Z"
+}

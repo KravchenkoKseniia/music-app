@@ -1,0 +1,14 @@
+{
+  "title": "Kill Bill",
+  "artist": "Ariana Grande",
+  "album": "24K Magic",
+  "genres": [
+    "Pop",
+    "Rock"
+  ],
+  "slug": "kill-bill",
+  "coverImage": "https://picsum.photos/seed/Kill%20Bill/300/300",
+  "id": "1745215911414",
+  "createdAt": "2025-04-21T06:11:51.414Z",
+  "updatedAt": "2025-04-21T06:11:51.414Z"
+}

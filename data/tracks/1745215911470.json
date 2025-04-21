@@ -1,0 +1,15 @@
+{
+  "title": "Respect",
+  "artist": "Ariana Grande",
+  "album": "Un Verano Sin Ti",
+  "genres": [
+    "Indie",
+    "Rock",
+    "Pop"
+  ],
+  "slug": "respect",
+  "coverImage": "https://picsum.photos/seed/Respect/300/300",
+  "id": "1745215911470",
+  "createdAt": "2025-04-21T06:11:51.470Z",
+  "updatedAt": "2025-04-21T06:11:51.470Z"
+}

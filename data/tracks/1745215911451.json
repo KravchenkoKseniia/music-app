@@ -1,0 +1,13 @@
+{
+  "title": "Diamonds",
+  "artist": "Dua Lipa",
+  "album": "Chromatica",
+  "genres": [
+    "Pop"
+  ],
+  "slug": "diamonds",
+  "coverImage": "https://picsum.photos/seed/Diamonds/300/300",
+  "id": "1745215911451",
+  "createdAt": "2025-04-21T06:11:51.451Z",
+  "updatedAt": "2025-04-21T06:11:51.451Z"
+}

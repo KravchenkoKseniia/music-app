@@ -1,0 +1,15 @@
+{
+  "title": "Billie Jean",
+  "artist": "Harry Styles",
+  "album": "Midnight",
+  "genres": [
+    "Country",
+    "Pop",
+    "Rock"
+  ],
+  "slug": "billie-jean",
+  "coverImage": "https://picsum.photos/seed/Billie%20Jean/300/300",
+  "id": "1745215911489",
+  "createdAt": "2025-04-21T06:11:51.489Z",
+  "updatedAt": "2025-04-21T06:11:51.489Z"
+}

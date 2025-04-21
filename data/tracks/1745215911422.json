@@ -1,0 +1,12 @@
+{
+  "title": "Heroes",
+  "artist": "SZA",
+  "genres": [
+    "Jazz"
+  ],
+  "slug": "heroes",
+  "coverImage": "https://picsum.photos/seed/Heroes/300/300",
+  "id": "1745215911422",
+  "createdAt": "2025-04-21T06:11:51.422Z",
+  "updatedAt": "2025-04-21T06:11:51.422Z"
+}

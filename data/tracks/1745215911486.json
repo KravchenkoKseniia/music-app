@@ -1,0 +1,14 @@
+{
+  "title": "Circles",
+  "artist": "The Weeknd",
+  "album": "Beerbongs & Bentleys",
+  "genres": [
+    "R&B",
+    "Reggae"
+  ],
+  "slug": "circles",
+  "coverImage": "https://picsum.photos/seed/Circles/300/300",
+  "id": "1745215911486",
+  "createdAt": "2025-04-21T06:11:51.486Z",
+  "updatedAt": "2025-04-21T06:11:51.486Z"
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Uptown Funk",
+  "artist": "Ariana Grande",
+  "album": "Chromatica",
+  "genres": [
+    "Reggae"
+  ],
+  "slug": "uptown-funk",
+  "coverImage": "https://picsum.photos/seed/Uptown%20Funk/300/300",
+  "id": "1745215911395",
+  "createdAt": "2025-04-21T06:11:51.395Z",
+  "updatedAt": "2025-04-21T06:11:51.395Z"
+}

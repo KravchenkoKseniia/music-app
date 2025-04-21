@@ -1,0 +1,13 @@
+{
+  "title": "Heroes",
+  "artist": "Billie Eilish",
+  "album": "Justice",
+  "genres": [
+    "Hip Hop"
+  ],
+  "slug": "heroes",
+  "coverImage": "https://picsum.photos/seed/Heroes/300/300",
+  "id": "1745215911411",
+  "createdAt": "2025-04-21T06:11:51.411Z",
+  "updatedAt": "2025-04-21T06:11:51.411Z"
+}

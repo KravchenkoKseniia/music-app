@@ -1,0 +1,14 @@
+{
+  "title": "Heroes",
+  "artist": "Taylor Swift",
+  "album": "Happier Than Ever",
+  "genres": [
+    "Rock",
+    "Pop"
+  ],
+  "slug": "heroes",
+  "coverImage": "https://picsum.photos/seed/Heroes/300/300",
+  "id": "1745215911393",
+  "createdAt": "2025-04-21T06:11:51.393Z",
+  "updatedAt": "2025-04-21T06:11:51.393Z"
+}

@@ -1,0 +1,18 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
+
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 45px auto 0;
+}
+
+.title{
+    margin: 0;
+    font-family: "Kumbh Sans", sans-serif;
+    font-size: 32px;
+    line-height: 22px;
+    letter-spacing: -0.41px;
+    font-weight: 500;
+    color: #000000;
+}

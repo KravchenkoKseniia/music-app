@@ -1,0 +1,14 @@
+{
+  "title": "Circles",
+  "artist": "Coldplay",
+  "genres": [
+    "Electronic",
+    "Country",
+    "Indie"
+  ],
+  "slug": "circles",
+  "coverImage": "https://picsum.photos/seed/Circles/300/300",
+  "id": "1745215911399",
+  "createdAt": "2025-04-21T06:11:51.399Z",
+  "updatedAt": "2025-04-21T06:11:51.399Z"
+}

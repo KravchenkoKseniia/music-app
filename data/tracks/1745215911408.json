@@ -1,0 +1,14 @@
+{
+  "title": "Billie Jean",
+  "artist": "Post Malone",
+  "album": "Beerbongs & Bentleys",
+  "genres": [
+    "Jazz",
+    "Hip Hop"
+  ],
+  "slug": "billie-jean",
+  "coverImage": "https://picsum.photos/seed/Billie%20Jean/300/300",
+  "id": "1745215911408",
+  "createdAt": "2025-04-21T06:11:51.408Z",
+  "updatedAt": "2025-04-21T06:11:51.408Z"
+}

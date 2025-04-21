@@ -1,0 +1,13 @@
+{
+  "title": "Rocket Man",
+  "artist": "Bad Bunny",
+  "album": "DAMN.",
+  "genres": [
+    "Hip Hop"
+  ],
+  "slug": "rocket-man",
+  "coverImage": "https://picsum.photos/seed/Rocket%20Man/300/300",
+  "id": "1745215911434",
+  "createdAt": "2025-04-21T06:11:51.434Z",
+  "updatedAt": "2025-04-21T06:11:51.434Z"
+}
