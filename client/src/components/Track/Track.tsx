@@ -9,16 +9,21 @@ type TrackProps = {
     genres?: string[];
     id?: string;
     onClick?: () => void;
+    coverImage?: string;
 }
 export const Track: React.FC<TrackProps> = ({   title = 'Title',
                                                 artist = 'Artist',
                                                 album = 'Album',
                                                 genres = ['1', '2', '3'],
                                                 id = '1',
-                                                onClick}) => {
+                                                onClick,
+                                            coverImage = QueenImg}) => {
+    if (coverImage == '') {
+        coverImage = QueenImg;
+    }
     return (
         <div onClick={onClick} data-testid={`track-item-${id}`} className={styles.container}>
-            <img src={QueenImg} alt="Album cover" className={styles.image} />
+            <img src={coverImage} alt="Album cover" className={styles.image} />
             <div className={styles.metadata}>
                 <p data-testid={`track-item-${id}-title`} className={styles.title}>{title}</p>
                 <p data-testid={`track-item-${id}-artist`} className={styles.artist}>{artist}</p>

@@ -6,6 +6,9 @@ import { Pagination, PageItem } from '../components/Pagination/Pagination';
 import { initTrackAPI, PaginatedTracks, Track } from '../modules/api/tracksAPI';
 import styles from './MainPage.module.css';
 import {Header} from "../components/Header/Header";
+import {Button} from "../components/Button/Button";
+import {ModalWindow} from "../components/ModalWindow/ModalWindow";
+import {CreateForm} from "../components/CreateForm/CreateForm";
 
 const API = initTrackAPI('http://localhost:8000/api', fetch);
 
@@ -23,6 +26,11 @@ export const MainPage: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState<string>('');
 
     const [totalPages, setTotalPages] = useState(1);
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
 
     const handleSearchChange = useCallback((term: string) => {
         setSearchTerm(term);
@@ -70,22 +78,65 @@ export const MainPage: React.FC = () => {
             .catch(console.error);
     }, [page, limit, sortField, genreFilter, artistFilter, searchTerm]);
 
+    const handleCreateSubmit = async (data: {
+        title: string;
+        artist: string;
+        album: string;
+        genres: string[];
+        coverImage: string;
+    }) => {
+        try {
+            await API.createTrack(data);
+            API.getTracks({ page, limit, sort: sortField, order:'asc' })
+                .then((res) => setTracks(res.data))
+                .catch(console.error);
+            closeModal();
+        } catch (err) {
+            console.error('Error creating track:', err);
+        }
+    }
+
+    const createTrack = () => {
+        // open modal window component with create form
+        openModal();
+    };
+
+    const deleteMultipleTracks = () => {
+        alert('Delete selected tracks');
+    };
+
     return (
         <>
             <Header/>
             <div className={styles.container}>
-                <Sort
-                    genres={['All', ...genres]}
-                    artists={['All', ...artists]}
-                    sortField={sortField}
-                    onSortChange={(f: 'title' | 'artist' | 'album' | 'createdAt') => { setSortField(f); setPage(1); }}
-                    genreFilter={genreFilter}
-                    onGenreFilterChange={(g: string) => { setGenreFilter(g); setPage(1); }}
-                    artistFilter={artistFilter}
-                    onArtistFilterChange={(a: string) => { setArtistFilter(a); setPage(1); }}
-                    searchTerm={searchTerm}
-                    onSearchChange={(term: string) => { setSearchTerm(term); setPage(1); }}
-                />
+                {/*<Sort*/}
+                {/*    genres={['All', ...genres]}*/}
+                {/*    artists={['All', ...artists]}*/}
+                {/*    sortField={sortField}*/}
+                {/*    onSortChange={handleSortChange}*/}
+                {/*    genreFilter={genreFilter || 'All'}*/}
+                {/*    onGenreFilterChange={handleGenreFilterChange}*/}
+                {/*    artistFilter={artistFilter || 'All'}*/}
+                {/*    onArtistFilterChange={handleArtistFilterChange}*/}
+                {/*    searchTerm={searchTerm}*/}
+                {/*    onSearchChange={handleSearchChange}*/}
+                {/*/>*/}
+
+                <div className={styles.buttons}>
+                    <Button title={"Create a Track"} type={"default"} onClick={createTrack} />
+                    <Button title={"Select tracks"} type={"default"} onClick={deleteMultipleTracks} />
+                </div>
+
+                {isModalOpen && (
+                    <ModalWindow onClose={closeModal} isOpen={isModalOpen}>
+                        <CreateForm
+                            allGenres={genres}
+                            onSubmit={handleCreateSubmit}
+                            onCancel={closeModal}
+                        />
+                    </ModalWindow>
+                )}
+
 
 
                 <div className={styles.list}>
@@ -97,6 +148,7 @@ export const MainPage: React.FC = () => {
                             artist={t.artist}
                             album={t.album}
                             genres={t.genres}
+                            coverImage={t.coverImage}
                         />
                     ))}
                 </div>

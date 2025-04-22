@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 45px auto 0;
+    margin: 45px auto 25px auto;
 }
 
 .title{

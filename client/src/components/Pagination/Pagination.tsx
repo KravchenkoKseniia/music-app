@@ -14,7 +14,7 @@ type PageProps = {
 
 export const Pagination: React.FC<PaginationProps> = ({ children }) => {
 
-    return <ul className={styles.pageList}>
+    return <ul data-testid="pagination" className={styles.pageList}>
         {children}
     </ul>;
 };
