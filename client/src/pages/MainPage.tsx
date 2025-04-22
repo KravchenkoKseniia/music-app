@@ -9,6 +9,7 @@ import {Header} from "../components/Header/Header";
 import {Button} from "../components/Button/Button";
 import {ModalWindow} from "../components/ModalWindow/ModalWindow";
 import {CreateForm} from "../components/CreateForm/CreateForm";
+import {EditData, EditForm} from "../components/EditForm/EditForm";
 
 const API = initTrackAPI('http://localhost:8000/api', fetch);
 
@@ -38,6 +39,9 @@ export const MainPage: React.FC = () => {
     // State for selection mode
     const [selectionMode, setSelectionMode] = useState(false);
     const [selectedIds, setSelectedIds]     = useState<Set<string>>(new Set());
+
+    // State for editing
+    const [editingTrack, setEditingTrack] = useState<Track | null>(null);
 
     const handleSearchChange = useCallback((term: string) => {
         setSearchTerm(term);
@@ -103,35 +107,34 @@ export const MainPage: React.FC = () => {
         }
     }
 
-    // Тoggler режиму селекції
+
     const toggleSelectionMode = () => {
         setSelectionMode(prev => !prev);
-        // якщо виходимо з режиму — очищаємо вибір
         if (selectionMode) {
             setSelectedIds(new Set());
         }
     };
 
-    // Клік по картці в режимі селекції — додає або прибирає з множини
-    const handleTrackClick = (id: string) => {
-        if (!selectionMode) return;
-        setSelectedIds(prev => {
-            const next = new Set(prev);
-            next.has(id) ? next.delete(id) : next.add(id);
-            return next;
-        });
-
+    const handleTrackClick = (t: Track) => {
+        if (selectionMode) {
+            setSelectedIds(prev => {
+                const next = new Set(prev);
+                next.has(t.id) ? next.delete(t.id) : next.add(t.id);
+                return next;
+            });
+        } else {
+            setEditingTrack(t);
+            setSelectedIds(new Set());
+        }
     };
 
-    // Видалити вибрані
     const handleDeleteSelected = async () => {
         const ids = Array.from(selectedIds);
         if (ids.length === 0) return;
         try {
             await API.deleteMultipleTracks(ids);
-            // Фільтруємо локально
-            setTracks(ts => ts.filter(t => !selectedIds.has(t.id)));
-            // Виходимо з режиму
+            setTracks(ts =>
+                ts.filter(t => !selectedIds.has(t.id)));
             setSelectionMode(false);
             setSelectedIds(new Set());
         } catch (err) {
@@ -140,18 +143,32 @@ export const MainPage: React.FC = () => {
         }
     };
 
-    const createTrack = () => {
-        openModal();
+    const handleUpdate = async (id: string, data: EditData) => {
+        const updated = await API.updateTrack(id, data);
+        setTracks(ts => ts.map(t => t.id===id ? updated : t));
+        setEditingTrack(null);
     };
 
-    const deleteMultipleTracks = () => {
-        alert('Delete selected tracks');
-        // button changes to delete selected tracks
-        // track cards changes on click to blue (sets selected state)
-        // selected tracks are deleted
+    const handleDelete = async (id: string) => {
+        await API.deleteTrack(id);
+        setTracks(ts => ts.filter(t => t.id!==id));
+        setEditingTrack(null);
+    };
 
+    const handleUpload = async (id: string, file: File) => {
+        const upd = await API.uploadTrackFile(id, file);
+        setTracks(ts => ts.map(t=> t.id===id? upd: t));
+        setEditingTrack(upd);
+    };
 
+    const handleRemoveFile = async (id: string) => {
+        const upd = await API.deleteTrackFile(id);
+        setTracks(ts => ts.map(t=> t.id===id? upd: t));
+        setEditingTrack(upd);
+    };
 
+    const createTrack = () => {
+        openModal();
     };
 
     return (
@@ -198,6 +215,20 @@ export const MainPage: React.FC = () => {
                     </ModalWindow>
                 )}
 
+                {editingTrack && (
+                    <ModalWindow onClose={() => setEditingTrack(null)} isOpen={!!editingTrack}>
+                        <EditForm
+                            track={editingTrack}
+                            allGenres={genres}
+                            onSave={handleUpdate}
+                            onDelete={handleDelete}
+                            onUpload={handleUpload}
+                            onRemoveFile={handleRemoveFile}
+                            onCancel={() => setEditingTrack(null)}
+                        />
+                    </ModalWindow>
+                )}
+
 
 
                 <div className={styles.list}>
@@ -210,7 +241,7 @@ export const MainPage: React.FC = () => {
                             album={t.album}
                             genres={t.genres}
                             coverImage={t.coverImage}
-                            onClick={() => handleTrackClick(t.id)}
+                            onClick={() => handleTrackClick(t)}
                             isSelected={selectedIds.has(t.id)}
                         />
                     ))}

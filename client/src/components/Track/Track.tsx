@@ -21,7 +21,7 @@ export const Track: React.FC<TrackProps> = ({   title = 'Title',
                                                 onClick,
                                             coverImage = QueenImg,
                                             isSelected=false}) => {
-    if (coverImage == '') {
+    if (coverImage === '') {
         coverImage = QueenImg;
     }
     return (

@@ -48,7 +48,7 @@ img {
     padding: 10px 0;
 }
 
-.actions > *:not(:last-child) {
+.actions > *:first-child {
     margin-right: 20px;
     margin-bottom: 10px;
 }
@@ -70,6 +70,22 @@ img {
 }
 
 .tag > button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.fileSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto 0;
+    flex-direction: column;
+}
+
+.fileSection > button {
+    font-family: "Kumbh Sans", sans-serif;
+    margin-top: 5px;
     border: none;
     background: none;
     cursor: pointer;

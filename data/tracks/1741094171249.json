@@ -2,10 +2,13 @@
   "title": "Pagination Test Track 4",
   "artist": "Pagination Artist",
   "genres": [
-    "Electronic"
+    "Rock"
   ],
   "slug": "pagination-test-track-4",
   "id": "1741094171249",
   "createdAt": "2025-03-04T13:16:11.249Z",
-  "updatedAt": "2025-03-04T13:16:11.249Z"
+  "updatedAt": "2025-04-22T17:08:45.415Z",
+  "album": "",
+  "coverImage": "",
+  "audioFile": "1741094171249.mp3"
 }
