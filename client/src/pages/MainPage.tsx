@@ -175,18 +175,18 @@ export const MainPage: React.FC = () => {
         <>
             <Header/>
             <div className={styles.container}>
-                {/*<Sort*/}
-                {/*    genres={['All', ...genres]}*/}
-                {/*    artists={['All', ...artists]}*/}
-                {/*    sortField={sortField}*/}
-                {/*    onSortChange={handleSortChange}*/}
-                {/*    genreFilter={genreFilter || 'All'}*/}
-                {/*    onGenreFilterChange={handleGenreFilterChange}*/}
-                {/*    artistFilter={artistFilter || 'All'}*/}
-                {/*    onArtistFilterChange={handleArtistFilterChange}*/}
-                {/*    searchTerm={searchTerm}*/}
-                {/*    onSearchChange={handleSearchChange}*/}
-                {/*/>*/}
+                <Sort
+                    genres={['All', ...genres]}
+                    artists={['All', ...artists]}
+                    sortField={sortField}
+                    onSortChange={handleSortChange}
+                    genreFilter={genreFilter || 'All'}
+                    onGenreFilterChange={handleGenreFilterChange}
+                    artistFilter={artistFilter || 'All'}
+                    onArtistFilterChange={handleArtistFilterChange}
+                    searchTerm={searchTerm}
+                    onSearchChange={handleSearchChange}
+                />
 
                 <div className={styles.buttons}>
                     <Button title={"Create a Track"} type={"default"} onClick={createTrack} />

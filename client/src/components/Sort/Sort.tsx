@@ -55,15 +55,6 @@ export const Sort: React.FC<SortProps> = ({
                         ))}
                     </select>
                 </label>
-
-                <label>
-                    <span>Artist:</span>
-                    <select data-testid="filter-artist" value={artistFilter} onChange={e => onArtistFilterChange(e.target.value)}>
-                        {artists?.map((artist) => (
-                            <option key={artist} value={artist}>{artist}</option>
-                        ))}
-                    </select>
-                </label>
             </div>
             <SearchInput value={searchTerm} onSearchChange={onSearchChange} />
         </div>
