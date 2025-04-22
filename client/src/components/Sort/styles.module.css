@@ -13,5 +13,12 @@
     align-items: center;
     margin: 0 10px;
     flex-direction: column;
+}
 
+.filters > label:first-child {
+    margin: 0 0 5px 0;
+}
+
+option {
+    font-family: "Kumbh Sans", sans-serif;
 }

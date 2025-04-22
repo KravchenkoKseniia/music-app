@@ -18,7 +18,7 @@ export const SearchInput: React.FC<SearchFormProps> = ({ value, onSearchChange }
             onSearchChange(local.trim());
         }, 300);
         return () => clearTimeout(handler);
-    }, [local, onSearchChange]);
+    }, [local]);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setLocal(e.target.value);

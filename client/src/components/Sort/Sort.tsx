@@ -35,7 +35,8 @@ export const Sort: React.FC<SortProps> = ({
             <div className={styles.sortOptions}>
                 <label>
                     <span>Sort by:</span>
-                    <select value={sortField}
+                    <select data-testid="sort-select"
+                            value={sortField}
                             onChange={e => onSortChange(e.target.value as SortOption)}>
                         <option value="title">Title</option>
                         <option value="artist">Artist</option>
@@ -48,7 +49,7 @@ export const Sort: React.FC<SortProps> = ({
             <div className={styles.filters}>
                 <label>
                     <span>Genre:</span>
-                    <select value={genreFilter} onChange={e => onGenreFilterChange(e.target.value)}>
+                    <select data-testid="filter-genre" value={genreFilter} onChange={e => onGenreFilterChange(e.target.value)}>
                         {genres?.map((genre) => (
                             <option key={genre} value={genre}>{genre}</option>
                         ))}
@@ -57,7 +58,7 @@ export const Sort: React.FC<SortProps> = ({
 
                 <label>
                     <span>Artist:</span>
-                    <select value={artistFilter} onChange={e => onArtistFilterChange(e.target.value)}>
+                    <select data-testid="filter-artist" value={artistFilter} onChange={e => onArtistFilterChange(e.target.value)}>
                         {artists?.map((artist) => (
                             <option key={artist} value={artist}>{artist}</option>
                         ))}
