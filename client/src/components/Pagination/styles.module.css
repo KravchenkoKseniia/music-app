@@ -4,7 +4,7 @@
     font-family: "Kumbh Sans", sans-serif;
     display: flex;
     font-size: 0.8em;
-    color: #1165ff;
+    color: #777575;
     justify-content: center;
 }
 
@@ -26,6 +26,6 @@
 
 .pageItem:hover,
 .pageItemActive {
-    background-color: #1165ff;
+    background-color: #6a6767;
     color: #fff;
 }

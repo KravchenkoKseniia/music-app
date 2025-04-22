@@ -2,6 +2,7 @@
 
 .container {
     text-align: center;
+    position: relative;
 }
 
 .input{
@@ -10,7 +11,7 @@
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 25%);
     margin: 18px auto 0;
     max-width: 353px;
-    padding: 10px 50px;
+    padding: 10px 25px;
     text-align: center;
     box-sizing: border-box;
 }
@@ -20,7 +21,7 @@
 }
 
 .label{
-    margin: 0;
+    margin: 0 15px 0 0;
     font-family: "Kumbh Sans", sans-serif;
     font-size: 16px;
     line-height: 22px;
@@ -33,6 +34,23 @@
 }
 
 img {
+    margin: 20px 0 0 0;
     width: 20%;
     border-radius: 22px;
+}
+
+.actions {
+    margin: 20px auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.actions > * {
+    width: 50%;
+}
+
+.actions > *:not(:last-child) {
+    margin-bottom: 10px;
 }

@@ -58,3 +58,9 @@
     font-weight: 400;
     color: #000000;
 }
+
+.selected {
+    background-color: #D7EAFD;
+    border: 2px solid #86BEF3;
+    box-shadow: 0 0 10px 0 rgba(150, 196, 239, 0.5);
+}

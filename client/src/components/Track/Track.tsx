@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import styles from './styles.module.css';
 import QueenImg from './queen.jpg';
+import classNames from "classnames";
 
 type TrackProps = {
     title?: string;
@@ -10,6 +11,7 @@ type TrackProps = {
     id?: string;
     onClick?: () => void;
     coverImage?: string;
+    isSelected?: boolean;
 }
 export const Track: React.FC<TrackProps> = ({   title = 'Title',
                                                 artist = 'Artist',
@@ -17,12 +19,15 @@ export const Track: React.FC<TrackProps> = ({   title = 'Title',
                                                 genres = ['1', '2', '3'],
                                                 id = '1',
                                                 onClick,
-                                            coverImage = QueenImg}) => {
+                                            coverImage = QueenImg,
+                                            isSelected=false}) => {
     if (coverImage == '') {
         coverImage = QueenImg;
     }
     return (
-        <div onClick={onClick} data-testid={`track-item-${id}`} className={styles.container}>
+        <div onClick={onClick} data-testid={`track-item-${id}`} className={classNames(styles.container, {
+            [styles.selected]: isSelected
+        })}>
             <img src={coverImage} alt="Album cover" className={styles.image} />
             <div className={styles.metadata}>
                 <p data-testid={`track-item-${id}-title`} className={styles.title}>{title}</p>

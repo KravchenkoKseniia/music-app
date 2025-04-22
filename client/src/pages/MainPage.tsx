@@ -13,13 +13,16 @@ import {CreateForm} from "../components/CreateForm/CreateForm";
 const API = initTrackAPI('http://localhost:8000/api', fetch);
 
 export const MainPage: React.FC = () => {
+    // State for tracks, genres, artists
     const [tracks, setTracks] = useState<Track[]>([]);
     const [genres, setGenres] = useState<string[]>([]);
     const [artists, setArtists] = useState<string[]>([]);
 
+    // State for pagination
     const [page, setPage] = useState(1);
     const [limit] = useState(10);
 
+    // State for sorting and filtering
     const [sortField, setSortField] = useState<'title'|'artist'|'album'|'createdAt'>('createdAt');
     const [genreFilter, setGenreFilter] = useState<string>('');
     const [artistFilter, setArtistFilter] = useState<string>('');
@@ -27,10 +30,14 @@ export const MainPage: React.FC = () => {
 
     const [totalPages, setTotalPages] = useState(1);
 
+    // Modal state
     const [isModalOpen, setIsModalOpen] = useState(false);
-
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
+
+    // State for selection mode
+    const [selectionMode, setSelectionMode] = useState(false);
+    const [selectedIds, setSelectedIds]     = useState<Set<string>>(new Set());
 
     const handleSearchChange = useCallback((term: string) => {
         setSearchTerm(term);
@@ -96,13 +103,55 @@ export const MainPage: React.FC = () => {
         }
     }
 
+    // Тoggler режиму селекції
+    const toggleSelectionMode = () => {
+        setSelectionMode(prev => !prev);
+        // якщо виходимо з режиму — очищаємо вибір
+        if (selectionMode) {
+            setSelectedIds(new Set());
+        }
+    };
+
+    // Клік по картці в режимі селекції — додає або прибирає з множини
+    const handleTrackClick = (id: string) => {
+        if (!selectionMode) return;
+        setSelectedIds(prev => {
+            const next = new Set(prev);
+            next.has(id) ? next.delete(id) : next.add(id);
+            return next;
+        });
+
+    };
+
+    // Видалити вибрані
+    const handleDeleteSelected = async () => {
+        const ids = Array.from(selectedIds);
+        if (ids.length === 0) return;
+        try {
+            await API.deleteMultipleTracks(ids);
+            // Фільтруємо локально
+            setTracks(ts => ts.filter(t => !selectedIds.has(t.id)));
+            // Виходимо з режиму
+            setSelectionMode(false);
+            setSelectedIds(new Set());
+        } catch (err) {
+            console.error(err);
+            alert('Some error');
+        }
+    };
+
     const createTrack = () => {
-        // open modal window component with create form
         openModal();
     };
 
     const deleteMultipleTracks = () => {
         alert('Delete selected tracks');
+        // button changes to delete selected tracks
+        // track cards changes on click to blue (sets selected state)
+        // selected tracks are deleted
+
+
+
     };
 
     return (
@@ -124,7 +173,19 @@ export const MainPage: React.FC = () => {
 
                 <div className={styles.buttons}>
                     <Button title={"Create a Track"} type={"default"} onClick={createTrack} />
-                    <Button title={"Select tracks"} type={"default"} onClick={deleteMultipleTracks} />
+                    <Button
+                        title={selectionMode ? 'Cancel selection' : 'Select tracks'}
+                        type="default"
+                        onClick={toggleSelectionMode}
+                    />
+                    {selectionMode && (
+                        <Button
+                            title={`Delete selected (${selectedIds.size})`}
+                            type="default"
+                            onClick={handleDeleteSelected}
+                            isDisabled={selectedIds.size === 0}
+                        />
+                    )}
                 </div>
 
                 {isModalOpen && (
@@ -149,6 +210,8 @@ export const MainPage: React.FC = () => {
                             album={t.album}
                             genres={t.genres}
                             coverImage={t.coverImage}
+                            onClick={() => handleTrackClick(t.id)}
+                            isSelected={selectedIds.has(t.id)}
                         />
                     ))}
                 </div>

@@ -2,9 +2,9 @@
     margin: 30px 0;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 20px;
 }
 
 .buttons > * {
-    max-width: 170px;
+    max-width: 200px;
 }

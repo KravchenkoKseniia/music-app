@@ -135,13 +135,12 @@
                 </div>
 
                 <div className={styles.field}>
-                    <label className={styles.label}>Cover Image URL</label>
+                    <label className={styles.label}>Image URL</label>
                     <input
                         data-testid="input-cover-image"
                         className={styles.input}
                         value={coverImage}
                         onChange={e => setCoverImage(e.target.value)}
-                        placeholder="https://example.com/cover.jpg"
                     />
                     {errors.coverImage && <div data-testid="error-coverImage" className={styles.error}>{errors.coverImage}</div>}
                     <div className={styles.preview}>
@@ -154,14 +153,12 @@
                 </div>
 
                 <div className={styles.actions}>
-                    {/*<Button*/}
-                    {/*    data-testid="submit-button"*/}
-                    {/*    title="Create"*/}
-                    {/*    type="inverse"*/}
-                    {/*    onClick={handleSubmit}*/}
-                    {/*/>*/}
-                    <button type="submit" data-testid="submit-button">Create</button>
-                    <button type="button" onClick={onCancel}>Cancel</button>
+                    <Button
+                        data-testid="submit-button"
+                        title="Create"
+                        type="inverse"
+                    />
+                    <Button title={"Cancel"} type={"inverse"} onClick={onCancel} />
                 </div>
             </form>
         );
