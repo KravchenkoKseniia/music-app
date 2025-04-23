@@ -16,6 +16,7 @@ type SortProps = {
     onArtistFilterChange: (artist: string) => void;
     searchTerm: string;
     onSearchChange: (term: string) => void;
+    isDisabled?: boolean;
 };
 
 export const Sort: React.FC<SortProps> = ({
@@ -29,13 +30,14 @@ export const Sort: React.FC<SortProps> = ({
                                               onArtistFilterChange,
                                               searchTerm,
                                               onSearchChange,
+                                              isDisabled = false,
 }) => {
     return (
         <div className={styles.sortContainer}>
             <div className={styles.sortOptions}>
                 <label>
                     <span>Sort by:</span>
-                    <select data-testid="sort-select"
+                    <select aria-disabled={isDisabled} disabled={isDisabled} data-testid="sort-select"
                             value={sortField}
                             onChange={e => onSortChange(e.target.value as SortOption)}>
                         <option value="title">Title</option>

@@ -158,7 +158,7 @@
                         title="Create"
                         type="inverse"
                     />
-                    <Button title={'Cancel'} type={'inverse'} onClick={onCancel} />
+                    <Button data-testid="cancel-delete" title={'Cancel'} type={'inverse'} onClick={onCancel} />
                 </div>
             </form>
         );

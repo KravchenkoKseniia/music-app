@@ -9,7 +9,7 @@ type LoaderElementType = {
 }
 
 export const Loader: React.FC<LoaderElementType> = ({isLoading}) => {
-    return <div className={classNames(styles.notification, {
+    return <div data-testid="loading-indicator" className={classNames(styles.notification, {
         [styles.isLoading]: isLoading,
         [styles.isNotLoading]: !isLoading
     })} >

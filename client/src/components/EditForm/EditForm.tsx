@@ -204,17 +204,17 @@
 
                 <div className={styles.actions}>
                     <Button
-                        data-testid="submit-button"
+                        data-testid={`save-track-${track.id}`}
                         title="Save"
                         type="inverse"
                     />
                     <Button
-                        data-testid="delete-button"
+                        data-testid={`delete-track-${track.id}`}
                         title="Delete"
                         type="inverse"
                         onClick={() => onDelete(track.id)}
                     />
-                    <Button title={'Cancel'} type={'inverse'} onClick={onCancel} />
+                    <Button data-testid="cancel-delete" title={'Cancel'} type={'inverse'} onClick={onCancel} />
                 </div>
             </form>
         );

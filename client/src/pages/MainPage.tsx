@@ -248,14 +248,16 @@ export const MainPage: React.FC = () => {
                     onArtistFilterChange={handleArtistFilterChange}
                     searchTerm={searchTerm}
                     onSearchChange={handleSearchChange}
+                    isDisabled={isLoading}
                 />
 
                 <div className={styles.buttons}>
-                    <Button title={'Create a Track'} type={'default'} onClick={createTrack} />
+                    <Button data-testid="create-track-button" title={'Create a Track'} type={'default'} onClick={createTrack} />
                     <Button
                         title={selectionMode ? 'Cancel selection' : 'Select tracks'}
                         type="default"
                         onClick={toggleSelectionMode}
+                        data-testid="select-mode-toggle"
                     />
                     {selectionMode && (
                         <Button
@@ -263,12 +265,14 @@ export const MainPage: React.FC = () => {
                             type="default"
                             onClick={handleDeleteSelected}
                             isDisabled={selectedIds.size === 0}
+                            data-testid="bulk-delete-button"
                         />
                     )}
                 </div>
 
                 <div className={styles.title}>
                     <h4>To edit a track, please click on the track card</h4>
+                    <h4>To delete multiple tracks, please click on the select button and then on the track cards</h4>
                 </div>
 
 
