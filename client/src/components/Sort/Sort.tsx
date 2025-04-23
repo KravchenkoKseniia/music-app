@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import styles from './styles.module.css';
-import {SearchInput} from "../SearchInput/SearchInput";
+import {SearchInput} from '../SearchInput/SearchInput';
 
 
 type SortOption = 'title' | 'artist' | 'album' | 'createdAt';

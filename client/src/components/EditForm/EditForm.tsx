@@ -1,4 +1,4 @@
-﻿    import React, {ChangeEvent, FormEvent, FormEventHandler, useState} from 'react';
+﻿    import React, {ChangeEvent, FormEvent, useState} from 'react';
     import styles from './styles.module.css';
     import {Button} from '../Button/Button';
     import QueenImg from '../Track/queen.jpg';
@@ -73,7 +73,7 @@
             }
             setErrors(errors);
             return Object.keys(errors).length === 0;
-        }
+        };
 
         const handleSubmit = (e: FormEvent) => {
             e.preventDefault();
@@ -87,7 +87,7 @@
                 genres: selectedGenres,
                 coverImage: coverImage.trim()
             });
-        }
+        };
 
         const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
             const file = e.target.files?.[0];
@@ -214,7 +214,7 @@
                         type="inverse"
                         onClick={() => onDelete(track.id)}
                     />
-                    <Button title={"Cancel"} type={"inverse"} onClick={onCancel} />
+                    <Button title={'Cancel'} type={'inverse'} onClick={onCancel} />
                 </div>
             </form>
         );

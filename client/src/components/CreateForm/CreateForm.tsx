@@ -1,4 +1,4 @@
-﻿    import React, {FormEvent, FormEventHandler, useState} from 'react';
+﻿    import React, {FormEvent, useState} from 'react';
     import styles from './styles.module.css';
     import {Button} from '../Button/Button';
     import QueenImg from '../Track/queen.jpg';
@@ -60,7 +60,7 @@
             }
             setErrors(errors);
             return Object.keys(errors).length === 0;
-        }
+        };
 
         const handleSubmit = (e: FormEvent) => {
             e.preventDefault();
@@ -74,7 +74,7 @@
                 genres: selectedGenres,
                 coverImage
             });
-        }
+        };
 
         return (
             <form data-testid="track-form" className={styles.container} onSubmit={handleSubmit}>
@@ -158,7 +158,7 @@
                         title="Create"
                         type="inverse"
                     />
-                    <Button title={"Cancel"} type={"inverse"} onClick={onCancel} />
+                    <Button title={'Cancel'} type={'inverse'} onClick={onCancel} />
                 </div>
             </form>
         );

@@ -5,13 +5,13 @@ import { Track as TrackCard } from '../components/Track/Track';
 import { Pagination, PageItem } from '../components/Pagination/Pagination';
 import { initTrackAPI, PaginatedTracks, Track } from '../modules/api/tracksAPI';
 import styles from './MainPage.module.css';
-import {Header} from "../components/Header/Header";
-import {Button} from "../components/Button/Button";
-import {ModalWindow} from "../components/ModalWindow/ModalWindow";
-import {CreateForm} from "../components/CreateForm/CreateForm";
-import {EditData, EditForm} from "../components/EditForm/EditForm";
-import {Loader} from "../components/Loader/Loader";
-import {NotificationElement} from "../components/NotificationElement/NotificationElement";
+import {Header} from '../components/Header/Header';
+import {Button} from '../components/Button/Button';
+import {ModalWindow} from '../components/ModalWindow/ModalWindow';
+import {CreateForm} from '../components/CreateForm/CreateForm';
+import {EditData, EditForm} from '../components/EditForm/EditForm';
+import {Loader} from '../components/Loader/Loader';
+import {NotificationElement} from '../components/NotificationElement/NotificationElement';
 
 const API = initTrackAPI('http://localhost:8000/api', fetch);
 
@@ -131,7 +131,7 @@ export const MainPage: React.FC = () => {
             setNotification({level: 'error', message: 'Error creating track'});
             console.error('Error creating track:', err);
         }
-    }
+    };
 
 
     const toggleSelectionMode = () => {
@@ -145,7 +145,11 @@ export const MainPage: React.FC = () => {
         if (selectionMode) {
             setSelectedIds(prev => {
                 const next = new Set(prev);
-                next.has(t.id) ? next.delete(t.id) : next.add(t.id);
+                if (next.has(t.id)) {
+                    next.delete(t.id);
+                } else {
+                    next.add(t.id);
+                }
                 return next;
             });
         } else {
@@ -247,7 +251,7 @@ export const MainPage: React.FC = () => {
                 />
 
                 <div className={styles.buttons}>
-                    <Button title={"Create a Track"} type={"default"} onClick={createTrack} />
+                    <Button title={'Create a Track'} type={'default'} onClick={createTrack} />
                     <Button
                         title={selectionMode ? 'Cancel selection' : 'Select tracks'}
                         type="default"
@@ -304,6 +308,7 @@ export const MainPage: React.FC = () => {
                             album={t.album}
                             genres={t.genres}
                             coverImage={t.coverImage}
+                            audioFile={t.audioFile}
                             onClick={() => handleTrackClick(t)}
                             isSelected={selectedIds.has(t.id)}
                         />

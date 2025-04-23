@@ -7,37 +7,37 @@ type SearchFormProps = {
     onSearchChange: (term: string) => void;
 };
 export const SearchInput: React.FC<SearchFormProps> = ({ value, onSearchChange }) => {
-    const [local, setLocal] = useState(value);
+    const [searchTerm, setSearchTerm] = useState(value);
 
     useEffect(() => {
-        setLocal(value);
+        setSearchTerm(value);
     }, [value]);
 
     useEffect(() => {
         const handler = setTimeout(() => {
-            onSearchChange(local.trim());
+            onSearchChange(searchTerm.trim());
         }, 300);
         return () => clearTimeout(handler);
-    }, [local]);
+    }, [searchTerm]);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setLocal(e.target.value);
+        setSearchTerm(e.target.value);
     };
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        onSearchChange(local.trim());
+        onSearchChange(searchTerm.trim());
     };
 
     return (
         <form onSubmit={handleSubmit} className={styles.fgsearch}>
-            <input data-testid="search-input" type="text" placeholder="Queen" className={styles.input} value={local} onChange={handleChange} />
+            <input data-testid="search-input" type="text" placeholder="Queen" className={styles.input} value={searchTerm} onChange={handleChange} />
             <button type="submit" >
                 <FaSearch size={20} />
             </button>
         </form>
     );
-}
+};
 
 
 

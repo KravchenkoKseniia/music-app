@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import styles from './styles.module.css';
 import QueenImg from './queen.jpg';
-import classNames from "classnames";
+import classNames from 'classnames';
 
 type TrackProps = {
     title?: string;
@@ -12,6 +12,7 @@ type TrackProps = {
     onClick?: () => void;
     coverImage?: string;
     isSelected?: boolean;
+    audioFile?: string;
 }
 export const Track: React.FC<TrackProps> = ({   title = 'Title',
                                                 artist = 'Artist',
@@ -20,10 +21,15 @@ export const Track: React.FC<TrackProps> = ({   title = 'Title',
                                                 id = '1',
                                                 onClick,
                                             coverImage = QueenImg,
-                                            isSelected=false}) => {
+                                            isSelected=false, audioFile}) => {
     if (coverImage === '') {
         coverImage = QueenImg;
     }
+
+    if (genres.length === 0) {
+        genres = ['No genres'];
+    }
+
     return (
         <div onClick={onClick} data-testid={`track-item-${id}`} className={classNames(styles.container, {
             [styles.selected]: isSelected
@@ -34,6 +40,16 @@ export const Track: React.FC<TrackProps> = ({   title = 'Title',
                 <p data-testid={`track-item-${id}-artist`} className={styles.artist}>{artist}</p>
                 <p className={styles.album}>{album}</p>
                 <p className={styles.genres}>Genres: {genres.join(', ')}</p>
+
+                {audioFile && (
+                    <audio
+                        data-testid={`audio-player-${id}`}
+                        className={styles.audioPlayer}
+                        controls
+                        src={`http://localhost:8000/api/files/${audioFile}`}
+                    >
+                    </audio>
+                )}
             </div>
 
         </div>

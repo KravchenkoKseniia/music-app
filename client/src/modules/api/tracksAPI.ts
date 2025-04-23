@@ -1,5 +1,5 @@
-﻿import { Static, Type } from '@sinclair/typebox'
-import { convertToType } from '../convertToType'
+﻿import { Static, Type } from '@sinclair/typebox';
+import { convertToType } from '../convertToType';
 
 const TrackSchema = Type.Object({
     id: Type.String(),
@@ -12,7 +12,7 @@ const TrackSchema = Type.Object({
     audioFile: Type.Optional(Type.String()),
     createdAt: Type.String(),
     updatedAt: Type.String(),
-})
+});
 
 const PaginatedTracksSchema = Type.Object({
     data: Type.Array(TrackSchema),
@@ -22,10 +22,10 @@ const PaginatedTracksSchema = Type.Object({
         limit: Type.Number(),
         totalPages: Type.Number(),
     })
-})
+});
 
-const GenreSchema = Type.String()
-const GenresSchema = Type.Array(GenreSchema)
+const GenreSchema = Type.String();
+const GenresSchema = Type.Array(GenreSchema);
 
 export type Track = Static<typeof TrackSchema>
 export type PaginatedTracks = Static<typeof PaginatedTracksSchema>
@@ -34,22 +34,22 @@ export type Genres = Static<typeof GenresSchema>
 
 export const initTrackAPI = (baseUrl: string, fetchAPI: typeof fetch) => {
     const headers = () => {
-        const h = new Headers()
-        h.set('Content-Type', 'application/json')
-        return h
-    }
+        const h = new Headers();
+        h.set('Content-Type', 'application/json');
+        return h;
+    };
 
     const getGenres = async (): Promise<Genres> => {
         const res = await fetchAPI(`${baseUrl}/genres`, {
             headers: headers()
-        })
+        });
 
         if (!res.ok)
-            throw new Error(`Could not fetch genres: ${res.statusText}`)
+            throw new Error(`Could not fetch genres: ${res.statusText}`);
 
-        const data = await res.json()
-        return convertToType(data, GenresSchema)
-    }
+        const data = await res.json();
+        return convertToType(data, GenresSchema);
+    };
 
     const getTracks = async (params?: {
         page?: number
@@ -60,39 +60,39 @@ export const initTrackAPI = (baseUrl: string, fetchAPI: typeof fetch) => {
         genre?: string
         artist?: string
     }): Promise<PaginatedTracks> => {
-        const url = new URL(`${baseUrl}/tracks`)
+        const url = new URL(`${baseUrl}/tracks`);
 
         if (params) {
             Object.entries(params).forEach(([k, v]) => {
                 if (v !== undefined)
-                    url.searchParams.set(k, String(v))
-            })
+                    url.searchParams.set(k, String(v));
+            });
         }
 
         const res = await fetchAPI(url.toString(), {
             headers: headers()
-        })
+        });
 
         if (!res.ok)
-            throw new Error(`Could not fetch tracks: ${res.statusText}`)
+            throw new Error(`Could not fetch tracks: ${res.statusText}`);
 
-        const data = await res.json()
-        return convertToType(data, PaginatedTracksSchema)
-    }
+        const data = await res.json();
+        return convertToType(data, PaginatedTracksSchema);
+    };
 
 
     const getTrackBySlug = async (slug: string): Promise<Track> => {
         const res = await fetchAPI(`${baseUrl}/tracks/${slug}`, {
             headers: headers(),
-        })
+        });
 
         if (res.status === 404)
-            throw new Error('Track not found')
-        if (!res.ok) throw new Error(`Error: ${res.statusText}`)
+            throw new Error('Track not found');
+        if (!res.ok) throw new Error(`Error: ${res.statusText}`);
 
-        const data = await res.json()
-        return convertToType(data, TrackSchema)
-    }
+        const data = await res.json();
+        return convertToType(data, TrackSchema);
+    };
 
     const createTrack = async (payload: {
         title: string
@@ -106,16 +106,16 @@ export const initTrackAPI = (baseUrl: string, fetchAPI: typeof fetch) => {
             method: 'POST',
             headers: headers(),
             body: JSON.stringify(payload),
-        })
+        });
 
         if (res.status === 409)
-            throw new Error('Track already exists')
+            throw new Error('Track already exists');
         if (!res.ok)
-            throw new Error(`Error creating track: ${res.statusText}`)
+            throw new Error(`Error creating track: ${res.statusText}`);
 
-        const data = await res.json()
-        return convertToType(data, TrackSchema)
-    }
+        const data = await res.json();
+        return convertToType(data, TrackSchema);
+    };
 
     const updateTrack = async (
         id: string,
@@ -131,29 +131,29 @@ export const initTrackAPI = (baseUrl: string, fetchAPI: typeof fetch) => {
             method: 'PUT',
             headers: headers(),
             body: JSON.stringify(payload),
-        })
+        });
 
         if (res.status === 404)
-            throw new Error('Track not found')
+            throw new Error('Track not found');
 
         if (!res.ok)
-            throw new Error(`Error updating track: ${res.statusText}`)
+            throw new Error(`Error updating track: ${res.statusText}`);
 
-        const data = await res.json()
-        return convertToType(data, TrackSchema)
-    }
+        const data = await res.json();
+        return convertToType(data, TrackSchema);
+    };
 
     const deleteTrack = async (id: string): Promise<void> => {
         const res = await fetchAPI(`${baseUrl}/tracks/${id}`, {
             method: 'DELETE',
             headers: headers(),
-        })
+        });
         if (res.status === 404)
-            throw new Error('Track not found')
+            throw new Error('Track not found');
 
         if (!res.ok)
-            throw new Error(`Error deleting track: ${res.statusText}`)
-    }
+            throw new Error(`Error deleting track: ${res.statusText}`);
+    };
 
     const deleteMultipleTracks = async (ids: string[]): Promise<{
         success: string[]
@@ -163,47 +163,47 @@ export const initTrackAPI = (baseUrl: string, fetchAPI: typeof fetch) => {
             method: 'POST',
             headers: headers(),
             body: JSON.stringify({ ids }),
-        })
+        });
 
         if (!res.ok)
-            throw new Error(`Batch delete failed: ${res.statusText}`)
+            throw new Error(`Batch delete failed: ${res.statusText}`);
 
-        return res.json()
-    }
+        return res.json();
+    };
 
     const uploadTrackFile = async (
         id: string,
         file: File
     ): Promise<Track> => {
-        const form = new FormData()
-        form.append('file', file)
+        const form = new FormData();
+        form.append('file', file);
         const res = await fetchAPI(`${baseUrl}/tracks/${id}/upload`, {
             method: 'POST',
             body: form,
-        })
+        });
 
         if (!res.ok)
-            throw new Error(`Upload failed: ${res.statusText}`)
+            throw new Error(`Upload failed: ${res.statusText}`);
 
-        const data = await res.json()
-        return convertToType(data, TrackSchema)
-    }
+        const data = await res.json();
+        return convertToType(data, TrackSchema);
+    };
 
     const deleteTrackFile = async (id: string): Promise<Track> => {
         const res = await fetchAPI(`${baseUrl}/tracks/${id}/file`, {
             method: 'DELETE',
             headers: headers(),
-        })
+        });
 
         if (res.status === 404)
-            throw new Error('File or track not found')
+            throw new Error('File or track not found');
 
         if (!res.ok)
-            throw new Error(`Error deleting file: ${res.statusText}`)
+            throw new Error(`Error deleting file: ${res.statusText}`);
 
-        const data = await res.json()
-        return convertToType(data, TrackSchema)
-    }
+        const data = await res.json();
+        return convertToType(data, TrackSchema);
+    };
 
     return {
         getGenres,
@@ -215,5 +215,5 @@ export const initTrackAPI = (baseUrl: string, fetchAPI: typeof fetch) => {
         deleteMultipleTracks,
         uploadTrackFile,
         deleteTrackFile,
-    }
-}
+    };
+};
