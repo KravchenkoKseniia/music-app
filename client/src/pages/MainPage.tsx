@@ -1,5 +1,4 @@
-﻿// src/pages/MainPage.tsx
-import React, {useState, useEffect, useCallback} from 'react';
+﻿import React, {useState, useEffect, useCallback} from 'react';
 import { Sort } from '../components/Sort/Sort';
 import { Track as TrackCard } from '../components/Track/Track';
 import { Pagination, PageItem } from '../components/Pagination/Pagination';
