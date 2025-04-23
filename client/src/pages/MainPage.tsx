@@ -11,6 +11,7 @@ import {ModalWindow} from "../components/ModalWindow/ModalWindow";
 import {CreateForm} from "../components/CreateForm/CreateForm";
 import {EditData, EditForm} from "../components/EditForm/EditForm";
 import {Loader} from "../components/Loader/Loader";
+import {NotificationElement} from "../components/NotificationElement/NotificationElement";
 
 const API = initTrackAPI('http://localhost:8000/api', fetch);
 
@@ -46,6 +47,18 @@ export const MainPage: React.FC = () => {
 
     // Loading
     const [isLoading, setIsLoading] = useState(false);
+
+    const [notification, setNotification] = useState<{
+        level: 'error' | 'success' | 'info' | 'warning', message: string} | null
+    >(null);
+
+    useEffect(() => {
+        if(!notification) return;
+        const timer = setTimeout(() => {
+            setNotification(null);
+        }, 3000);
+        return () => clearTimeout(timer);
+    }, [notification]);
 
     const handleSearchChange = useCallback((term: string) => {
         setSearchTerm(term);
@@ -90,9 +103,14 @@ export const MainPage: React.FC = () => {
 
                 const uniqueArtists = Array.from(new Set(res.data.map(t => t.artist)));
                 setArtists(uniqueArtists);
-                setIsLoading(false);
+                if (res.data.length === 0) {
+                    setNotification({level: 'info', message: 'No tracks found'});
+                }
             })
-            .catch(console.error);
+            .catch((err) => {
+                setNotification({ level: 'error', message: `Failed to load tracks: ${err.message}` });
+            })
+            .finally(() => setIsLoading(false));
     }, [page, limit, sortField, genreFilter, artistFilter, searchTerm]);
 
     const handleCreateSubmit = async (data: {
@@ -104,11 +122,13 @@ export const MainPage: React.FC = () => {
     }) => {
         try {
             await API.createTrack(data);
+            setNotification({level: 'success', message: 'Track created successfully'});
             API.getTracks({ page, limit, sort: sortField, order:'asc' })
                 .then((res) => setTracks(res.data))
                 .catch(console.error);
             closeModal();
         } catch (err) {
+            setNotification({level: 'error', message: 'Error creating track'});
             console.error('Error creating track:', err);
         }
     }
@@ -143,34 +163,64 @@ export const MainPage: React.FC = () => {
                 ts.filter(t => !selectedIds.has(t.id)));
             setSelectionMode(false);
             setSelectedIds(new Set());
+            setNotification({level: 'success', message: 'Tracks deleted successfully'});
         } catch (err) {
+            setNotification({level: 'error', message: 'Error deleting tracks'});
             console.error(err);
             alert('Some error');
         }
     };
 
     const handleUpdate = async (id: string, data: EditData) => {
-        const updated = await API.updateTrack(id, data);
-        setTracks(ts => ts.map(t => t.id===id ? updated : t));
-        setEditingTrack(null);
+        try {
+            const updated = await API.updateTrack(id, data);
+            setTracks(ts => ts.map(t => t.id === id ? updated : t));
+            setNotification({level: 'success', message: 'Track updated successfully'});
+            setEditingTrack(null);
+        }
+        catch (err) {
+            setNotification({level: 'error', message: 'Error updating track'});
+            console.error('Error updating track:', err);
+        }
     };
 
     const handleDelete = async (id: string) => {
-        await API.deleteTrack(id);
-        setTracks(ts => ts.filter(t => t.id!==id));
-        setEditingTrack(null);
+        try {
+            await API.deleteTrack(id);
+            setTracks(ts => ts.filter(t => t.id !== id));
+            setNotification({level: 'success', message: 'Track deleted successfully'});
+            setEditingTrack(null);
+        }
+        catch (err) {
+            setNotification({level: 'error', message: 'Error deleting track'});
+            console.error('Error deleting track:', err);
+        }
     };
 
     const handleUpload = async (id: string, file: File) => {
-        const upd = await API.uploadTrackFile(id, file);
-        setTracks(ts => ts.map(t=> t.id===id? upd: t));
-        setEditingTrack(upd);
+        try {
+            const upd = await API.uploadTrackFile(id, file);
+            setTracks(ts => ts.map(t => t.id === id ? upd : t));
+            setNotification({level: 'success', message: 'File uploaded successfully'});
+            setEditingTrack(upd);
+        }
+        catch (err) {
+            setNotification({level: 'error', message: 'Error uploading file'});
+            console.error('Error uploading file:', err);
+        }
     };
 
     const handleRemoveFile = async (id: string) => {
-        const upd = await API.deleteTrackFile(id);
-        setTracks(ts => ts.map(t=> t.id===id? upd: t));
-        setEditingTrack(upd);
+        try {
+            const upd = await API.deleteTrackFile(id);
+            setTracks(ts => ts.map(t => t.id === id ? upd : t));
+            setNotification({level: 'success', message: 'File removed successfully'});
+            setEditingTrack(upd);
+        }
+        catch (err) {
+            setNotification({level: 'error', message: 'Error removing file'});
+            console.error('Error removing file:', err);
+        }
     };
 
     const createTrack = () => {
@@ -180,6 +230,8 @@ export const MainPage: React.FC = () => {
     return (
         <>
             <Header/>
+            {notification &&
+                (<NotificationElement level={notification.level} message={notification.message} />)}
             <div className={styles.container}>
                 <Sort
                     genres={['All', ...genres]}
