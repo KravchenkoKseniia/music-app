@@ -8,8 +8,16 @@
     align-items: center;
     z-index: 1000;
     display: flex;
+    background-color: #ffffff
 }
 
 .isNotLoading {
     display: none;
+}
+
+.loaderImg {
+    max-width: 20vw;
+    max-height: 20vh;
+    width: auto;
+    height: auto;
 }

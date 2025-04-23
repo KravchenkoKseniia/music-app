@@ -1,4 +1,6 @@
-﻿.buttons {
+﻿@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
+
+.buttons {
     margin: 30px 0;
     display: flex;
     justify-content: center;
@@ -7,4 +9,16 @@
 
 .buttons > * {
     max-width: 200px;
+}
+
+.title {
+    text-align: center;
+}
+
+h4 {
+    font-family: "Kumbh Sans", sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
+    color: #000000;
 }

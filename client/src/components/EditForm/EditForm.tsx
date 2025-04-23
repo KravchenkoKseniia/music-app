@@ -41,8 +41,8 @@
 
         const isURL = (url: string) => {
             try{
-                const test = new URL(url);
-                return /\.(jpe?g|png|gif|bmp|webp)$/i.test(test.pathname);
+                new URL(url);
+                return true;
             }
             catch {
                 return false;

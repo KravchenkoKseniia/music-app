@@ -10,6 +10,7 @@ import {Button} from "../components/Button/Button";
 import {ModalWindow} from "../components/ModalWindow/ModalWindow";
 import {CreateForm} from "../components/CreateForm/CreateForm";
 import {EditData, EditForm} from "../components/EditForm/EditForm";
+import {Loader} from "../components/Loader/Loader";
 
 const API = initTrackAPI('http://localhost:8000/api', fetch);
 
@@ -43,6 +44,9 @@ export const MainPage: React.FC = () => {
     // State for editing
     const [editingTrack, setEditingTrack] = useState<Track | null>(null);
 
+    // Loading
+    const [isLoading, setIsLoading] = useState(false);
+
     const handleSearchChange = useCallback((term: string) => {
         setSearchTerm(term);
         setPage(1);
@@ -70,6 +74,7 @@ export const MainPage: React.FC = () => {
     }, []);
 
     useEffect(() => {
+        setIsLoading(true);
         API.getTracks({
             page,
             limit,
@@ -85,6 +90,7 @@ export const MainPage: React.FC = () => {
 
                 const uniqueArtists = Array.from(new Set(res.data.map(t => t.artist)));
                 setArtists(uniqueArtists);
+                setIsLoading(false);
             })
             .catch(console.error);
     }, [page, limit, sortField, genreFilter, artistFilter, searchTerm]);
@@ -205,6 +211,11 @@ export const MainPage: React.FC = () => {
                     )}
                 </div>
 
+                <div className={styles.title}>
+                    <h4>To edit a track, please click on the track card</h4>
+                </div>
+
+
                 {isModalOpen && (
                     <ModalWindow onClose={closeModal} isOpen={isModalOpen}>
                         <CreateForm
@@ -259,6 +270,8 @@ export const MainPage: React.FC = () => {
                     ))}
                 </Pagination>
             </div>
+
+            {isLoading && <Loader isLoading={isLoading}/>}
         </>
 
     );
