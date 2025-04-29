@@ -7,7 +7,7 @@ type HeaderProps = {
 
 export const Header : React.FC<HeaderProps> = ({title = 'MUSIC TRACKS APP'}) => {
     return (
-        <div className={styles.header}>
+        <div data-testid="tracks-header" className={styles.header}>
             <p className={styles.title}>{title}</p>
         </div>
     );

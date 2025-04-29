@@ -1,0 +1,71 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
+
+.container {
+    border-radius: 22px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 25%);
+    margin: 25px auto 0;
+    max-width: 500px;
+    padding: 15px 10px;
+    text-align: center;
+    box-sizing: border-box;
+    display: flex;
+    font-family: 'Kumbh Sans', sans-serif;
+
+}
+
+.container:hover {
+    cursor: pointer;
+}
+
+.image {
+    width: 35%;
+    border-radius: 22px;
+    margin: 0;
+}
+
+.metadata {
+    margin-left: 10px;
+    text-align: left;
+}
+
+.title {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    line-height: 22px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.artist {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 600;
+    color: #000000;
+}
+
+.album {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.genres {
+    margin: 0;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.selected {
+    background-color: #D7EAFD;
+    border: 2px solid #86BEF3;
+    box-shadow: 0 0 10px 0 rgba(150, 196, 239, 0.5);
+}
+
+.audioPlayer {
+    margin-top: 5px;
+}

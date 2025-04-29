@@ -1,0 +1,109 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
+
+.container {
+    text-align: center;
+    position: relative;
+}
+
+.input{
+    border: none;
+    border-radius: 22px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 25%);
+    margin: 18px auto 0;
+    max-width: 353px;
+    padding: 10px 25px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.field:not(:first-child){
+    margin-top: 25px;
+}
+
+.label{
+    margin: 0 15px 0 0;
+    font-family: "Kumbh Sans", sans-serif;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.btnContainer{
+    margin: 50px auto 0;
+}
+
+img {
+    margin: 20px 0 0 0;
+    width: 20%;
+    border-radius: 22px;
+}
+
+.actions {
+    margin: 20px auto 0;
+}
+
+.actions > * {
+    width: 40%;
+    padding: 10px 0;
+}
+
+.actions > *:first-child {
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.tags {
+    margin: 5px auto;
+}
+
+.tag {
+    margin: 0 2px;
+    padding: 5px 10px;
+    border-radius: 22px;
+    background-color: #f0f0f0;
+    font-family: "Kumbh Sans", sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.tag > button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.fileSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto 0;
+    flex-direction: column;
+}
+
+.fileSection > button {
+    font-family: "Kumbh Sans", sans-serif;
+    margin-top: 5px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+option {
+    font-family: "Kumbh Sans", sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.addGenre > button {
+    font-family: "Kumbh Sans", sans-serif;
+    border: none;
+    cursor: pointer;
+    font-size: 22px;
+    background: none;
+
+}

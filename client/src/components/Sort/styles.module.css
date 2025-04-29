@@ -1,0 +1,24 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
+
+.sortContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Kumbh Sans", sans-serif;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+    flex-direction: column;
+}
+
+.filters > label:first-child {
+    margin: 0 0 5px 0;
+}
+
+option {
+    font-family: "Kumbh Sans", sans-serif;
+}
